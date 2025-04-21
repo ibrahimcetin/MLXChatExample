@@ -8,9 +8,14 @@
 import SwiftUI
 import AVKit
 
+/// A view that displays a single message in the chat interface.
+/// Supports different message roles (user, assistant, system) and media attachments.
 struct MessageView: View {
+    /// The message to be displayed
     let message: Message
 
+    /// Creates a message view
+    /// - Parameter message: The message model to display
     init(_ message: Message) {
         self.message = message
     }
@@ -18,9 +23,11 @@ struct MessageView: View {
     var body: some View {
         switch message.role {
         case .user:
+            // User messages are right-aligned with blue background
             HStack {
                 Spacer()
                 VStack(alignment: .trailing, spacing: 8) {
+                    // Display first image if present
                     if let firstImage = message.images.first {
                         AsyncImage(url: firstImage) { image in
                             image
@@ -33,12 +40,14 @@ struct MessageView: View {
                         .clipShape(.rect(cornerRadius: 12))
                     }
 
+                    // Display first video if present
                     if let firstVideo = message.videos.first {
                         VideoPlayer(player: AVPlayer(url: firstVideo))
                             .frame(width: 250, height: 340)
                             .clipShape(.rect(cornerRadius: 12))
                     }
 
+                    // Message content with tinted background
                     Text(message.content)
                         .padding(.vertical, 8)
                         .padding(.horizontal, 12)
@@ -48,6 +57,7 @@ struct MessageView: View {
             }
 
         case .assistant:
+            // Assistant messages are left-aligned without background
             HStack {
                 Text(message.content)
                     .textSelection(.enabled)
@@ -56,6 +66,7 @@ struct MessageView: View {
             }
 
         case .system:
+            // System messages are centered with computer icon
             Label(message.content, systemImage: "desktopcomputer")
                 .font(.headline)
                 .foregroundColor(.secondary)

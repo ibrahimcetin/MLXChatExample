@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+/// Displays the chat conversation as a scrollable list of messages.
 struct ConversationView: View {
+    /// Array of messages to display in the conversation
     let messages: [Message]
 
     var body: some View {
@@ -24,5 +26,6 @@ struct ConversationView: View {
 }
 
 #Preview {
+    // Display sample conversation in preview
     ConversationView(messages: SampleData.conversation)
 }

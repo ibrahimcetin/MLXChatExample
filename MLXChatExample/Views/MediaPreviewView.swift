@@ -9,12 +9,15 @@ import SwiftUI
 import AVKit
 import AVFoundation
 
+/// A view that displays a horizontal scrollable list of media previews (images and videos).
 struct MediaPreviewsView: View {
+    /// The media selection containing arrays of image and video URLs
     let mediaSelection: MediaSelection
 
     var body: some View {
         ScrollView(.horizontal) {
             HStack(spacing: 8) {
+                // Display image previews
                 ForEach(mediaSelection.images, id: \.self) { imageURL in
                     MediaPreviewView(
                         mediaURL: imageURL,
@@ -25,6 +28,7 @@ struct MediaPreviewsView: View {
                     )
                 }
 
+                // Display video previews
                 ForEach(mediaSelection.videos, id: \.self) { videoURL in
                     MediaPreviewView(
                         mediaURL: videoURL,
@@ -41,15 +45,20 @@ struct MediaPreviewsView: View {
     }
 }
 
+/// A view that displays a single media item (image or video) with a remove button.
 struct MediaPreviewView: View {
+    /// URL of the media file to display
     let mediaURL: URL
+    /// Type of media (image or video)
     let type: MediaPreviewType
+    /// Callback to handle removal of the media item
     let onRemove: () -> Void
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
             switch type {
             case .image:
+                // Display image with loading placeholder
                 AsyncImage(url: mediaURL) { image in
                     image
                         .resizable()
@@ -61,6 +70,7 @@ struct MediaPreviewView: View {
                         .frame(width: 150, height: 100)
                 }
             case .video:
+                // Display video player
                 VideoPlayer(player: AVPlayer(url: mediaURL))
                     .frame(width: 150, height: 100)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
@@ -71,7 +81,9 @@ struct MediaPreviewView: View {
     }
 }
 
+/// A button for removing media items from the preview.
 struct RemoveButton: View {
+    /// Action to perform when the remove button is tapped
     let action: () -> Void
 
     var body: some View {
@@ -86,8 +98,11 @@ struct RemoveButton: View {
 }
 
 extension MediaPreviewView {
+    /// Defines the type of media that can be displayed in the preview
     enum MediaPreviewType {
+        /// An image file
         case image
+        /// A video file
         case video
     }
 }
