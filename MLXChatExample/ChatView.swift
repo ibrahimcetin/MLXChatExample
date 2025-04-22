@@ -5,9 +5,9 @@
 //  Created by İbrahim Çetin on 20.04.2025.
 //
 
-import SwiftUI
 import AVFoundation
 import AVKit
+import SwiftUI
 
 /// Main chat interface view that manages the conversation UI and user interactions.
 /// Displays messages, handles media attachments, and provides input controls.
@@ -18,7 +18,7 @@ struct ChatView: View {
     /// Initializes the chat view with a view model
     /// - Parameter viewModel: The view model to manage chat state
     init(viewModel: ChatViewModel) {
-        self.vm = viewModel
+        vm = viewModel
     }
 
     var body: some View {

@@ -36,12 +36,12 @@ class Message: Identifiable {
     ///   - images: Optional array of image URLs
     ///   - videos: Optional array of video URLs
     init(role: Role, content: String, images: [URL] = [], videos: [URL] = []) {
-        self.id = UUID()
+        id = UUID()
         self.role = role
         self.content = content
         self.images = images
         self.videos = videos
-        self.timestamp = .now
+        timestamp = .now
     }
 
     /// Defines the role of the message sender in the conversation

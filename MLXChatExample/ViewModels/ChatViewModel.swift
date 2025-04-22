@@ -79,12 +79,12 @@ class ChatViewModel {
             // Process generation chunks and update UI
             for await generation in try await mlxService.generate(messages: messages, model: selectedModel) {
                 switch generation {
-                case .chunk(let chunk):
+                case let .chunk(chunk):
                     // Append new text to the current assistant message
                     if let assistantMessage = messages.last {
                         assistantMessage.content += chunk
                     }
-                case .info(let info):
+                case let .info(info):
                     // Update performance metrics
                     generateCompletionInfo = info
                 }

@@ -8,8 +8,8 @@
 import Foundation
 
 import MLX
-import MLXLMCommon
 import MLXLLM
+import MLXLMCommon
 import MLXVLM
 
 /// A service class that manages machine learning models for text and vision-language tasks.
@@ -91,8 +91,8 @@ class MLXService {
             }
 
             // Process any attached media for VLM models
-            let images: [UserInput.Image] = message.images.map { imageURL in .url(imageURL)}
-            let videos: [UserInput.Video] = message.videos.map { videoURL in .url(videoURL)}
+            let images: [UserInput.Image] = message.images.map { imageURL in .url(imageURL) }
+            let videos: [UserInput.Video] = message.videos.map { videoURL in .url(videoURL) }
 
             return Chat.Message(role: role, content: message.content, images: images, videos: videos)
         }
