@@ -1,5 +1,8 @@
 # MLX Chat Example
 
+> [!WARNING]
+> This is a reference implementation. For the official and up-to-date version of this application, please use the [MLXChatExample](https://github.com/ml-explore/mlx-swift-examples/tree/main/Applications/MLXChatExample) in the [mlx-swift-examples](https://github.com/ml-explore/mlx-swift-examples) repository.
+
 A lightweight chat application demonstrating MLX integration for iOS and macOS. Built with SwiftUI, this example project shows how to implement both Large Language Models (LLMs) and Vision Language Models (VLMs) using MLX.
 
 <img alt="MLX Chat Example Screenshot" src="https://github.com/user-attachments/assets/9a20c081-61c2-4b0a-88df-f54500464d77" />
